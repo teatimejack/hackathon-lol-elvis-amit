@@ -1,21 +1,14 @@
-import { useState, useRef } from 'react'
 import './App.css'
-import Login from "./pages/Login"
-
-
+import {Routes, Route} from 'react-router'
+import Home from './pages/Home'
 
 function App() {
-
-  const numberOf = useRef(null)
-  const [count, setCount] = useState(0)
-
-  function name(params) {
-    numberOf.current = fi
-  }
   return (
-    <>
-      <LogIn />
-    </>
+  <>
+  <Routes>
+    <Route path='/' element={<Home/>}/>
+  </Routes>
+  </>
   )
 }
 
