@@ -1,13 +1,12 @@
 import { createContext, useContext, useState } from 'react';
 import { Link } from 'react-router';
-
+import Login from './Login';
 import { useNavigate } from 'react-router';
 
 import { useAuth } from '../context/AuthContext';
-import Register from './Register';
 
 
-const Login = () => {
+const Register = () => {
   const navigate = useNavigate()
   const { login } = useAuth()
 
@@ -17,7 +16,7 @@ const Login = () => {
   const handleSubmit = async(e) => {
       e.preventDefault()
       console.log('something....')
-      const res = await fetch('http://localhost:5002/login', {
+      const res = await fetch('http://localhost:5002/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userName: userName, userPassword: userPassword })
@@ -26,11 +25,10 @@ const Login = () => {
       console.log(data)
       console.log(data)
 
-
-      if (data.message === 'Log in Successful!') {
+      if (data.message === "Registration Complete!") {
         console.log('HEY WE ARE HERE — WIN!', data);
-        login(data.userInfo);
-        navigate('/champs');
+        alert('Username was registered successfully')
+        navigate('/');
       } else {
         alert(data.message);
       }
@@ -38,8 +36,8 @@ const Login = () => {
 
   return (
     <div>
-        <h1>Log In:</h1>
-        <h2>If you don't have an account: <Link to={'/register'}>Register</Link></h2>
+        <h1>Register:</h1>
+        <h2>If you have an account: <Link to={'/'}>Login</Link></h2>
 
         <form onSubmit={handleSubmit}>
             <label htmlFor="username"> UserName: </label>
@@ -56,4 +54,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Register
