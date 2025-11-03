@@ -16,7 +16,7 @@ const register = async (req, res) => {
     const existingUsers = await getUserByUsernameDB(username);
     console.log(existingUsers);
 
-    if (existingUsers) {
+    if (existingUsers.length > 0) {
       return res.json({ message: "This username already exists" });
     }
 

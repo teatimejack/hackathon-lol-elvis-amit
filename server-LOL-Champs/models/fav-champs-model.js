@@ -1,21 +1,22 @@
-// const db = require("../config/db.js");
+const db = require("../config/db.js");
 
-// const getAllFavoriteDB = () => {
-//   return db("fav-champs").select("id", "username_id", "favorite_id");
-// };
+const getAllFavoriteDB = () => {
+  return db("fav-champ").select("id", "username_id", "favorite_id");
+};
 
-// // const getFavoriteByUsernameDB = (username) => {
-// //   return db("fav-champs")
-// //     .select("username_id", "favorite_id")
-// //     .where({ username });
-// // };
+const getAllUserFavoriteDB = (username) => {
+  return db("users").join("fav_champ", "users.username", "fav_champ.username_id").select("users.username","users.username_id" );
+};
 
-// const insertFavorite = (username, hashPassword) => {
-//   return db("hashed_passwords").insert({ username, password: hashPassword });
-// };
+const insertFavorite = (username_id, fav_champ_id) => {
+  return db("fav_champ").insert({ username_id, fav_champ_id });
+};
 
-// module.exports = {
-//   //   getFavoriteByUsernameDB,
-//   insertFavorite,
-//   getAllFavoriteDB,
-// };
+
+module.exports = {
+  insertFavorite,
+  getAllFavoriteDB,
+};
+
+
+
