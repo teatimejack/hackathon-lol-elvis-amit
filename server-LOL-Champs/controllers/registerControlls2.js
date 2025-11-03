@@ -1,6 +1,3 @@
-const bcrypt = require("bcrypt");
-const saltRounds = 6;
-const { insertHashPassword } = require("../models/hashpwd-model.js");
 const {
   insertNewUser,
   getUserByUsernameDB,
@@ -8,7 +5,7 @@ const {
 
 const register = async (req, res) => {
   // console.log(req.body);
-  const { first_name, last_name, email, username, password } = req.body;
+  const { username, password } = req.body;
   if (!username || !password) {
     return res
       .status(400)
@@ -19,13 +16,11 @@ const register = async (req, res) => {
     const existingUsers = await getUserByUsernameDB(username);
     console.log(existingUsers);
 
-    if (existingUsers.length > 0) {
+    if (existingUsers) {
       return res.json({ message: "This username already exists" });
     }
 
-    const hash = await bcrypt.hash(password, saltRounds);
-    await insertNewUser(email, username, first_name, last_name);
-    await insertHashPassword(username, hash);
+    await insertNewUser(username, password);
     res.status(201).json({ message: "Registration Complete!" });
   } catch (err) {
     console.log("Registration Error:", err);
