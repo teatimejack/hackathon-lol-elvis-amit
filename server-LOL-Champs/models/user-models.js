@@ -1,23 +1,15 @@
 const db = require("../config/db.js");
 
 const getAllUsersDB = () => {
-  return db("users").select(
-    "id",
-    "email",
-    "username",
-    "first_name",
-    "last_name"
-  );
+  return db("users").select("id", "username", "password");
 };
 
 const getUserByUsernameDB = (username) => {
-  return db("users")
-    .select("email", "username", "first_name", "last_name")
-    .where({ username });
+  return db("users").select("username", "password").where({ username });
 };
 
-const insertNewUser = (email, username, first_name, last_name) => {
-  return db("users").insert({ email, username, first_name, last_name });
+const insertNewUser = (username, password) => {
+  return db("users").insert({ username, password });
 };
 
 module.exports = {
