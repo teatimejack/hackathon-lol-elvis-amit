@@ -1,4 +1,6 @@
 const express = require("express");
+const cors = require('cors');
+
 const registerRouter = require("./routes/registerRoutes.js");
 const loginRouter = require("./routes/loginRoutes.js");
 const userRouter = require("./routes/usersRoutes.js");
@@ -8,6 +10,8 @@ const PORT = 5002;
 app.listen(PORT, () => {
   console.log(`Users api is running on ${PORT}`);
 });
+
+app.use(cors());
 
 app.use("/", express.static(__dirname + "/public"));
 app.use(express.json());

@@ -21,6 +21,7 @@ const Search = ({ allChamps, setChampions }) => {
   return (
     <div className="search-bar">
       <input type="text" value={value} onChange={handleSearch} placeholder="Search by name" className="search-input"/>
+    
     </div>
   );
 };

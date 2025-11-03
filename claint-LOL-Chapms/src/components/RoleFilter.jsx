@@ -18,6 +18,7 @@ const handleRoleClick = (tag) => {
         {tags.map((tag)=>(
             <button key={tag} onClick={()=>handleRoleClick(tag)}>{tag}</button>
         ))}
+    
     </div>
   )
 }
