@@ -34,6 +34,7 @@ const Home = () => {
 
     return (
         <div className="home">
+        <h1>Hello {user.username}</h1>
         <h1 className="title">LoL Champions</h1>
             <Search allChamps={allChamps} setChampions={setChampions} />
             <RoleFilter allChamps={allChamps} setChampions = {setChampions} tags={tags}/>

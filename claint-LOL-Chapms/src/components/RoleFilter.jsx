@@ -11,12 +11,18 @@ const handleRoleClick = (tag) => {
     setNumberOf(`Number of ${tag}s : ${filtered.length}`)
     setChampions(filtered);
 }
+
+const showAll = () => {
+    setNumberOf(`Number of Champions : ${allChamps.length}`)
+    setChampions(allChamps);
+}
   return (
     <div>
 
     {numberOf?<p>{numberOf}</p>:<></>}
+    <button key="all" onClick={()=>showAll()}>All</button>
         {tags.map((tag)=>(
-            <button key={tag} onClick={()=>handleRoleClick(tag)}>{tag}</button>
+            <button style={{margin:"0.5em"}} key={tag} onClick={()=>handleRoleClick(tag)}>{tag}</button>
         ))}
     
     </div>
