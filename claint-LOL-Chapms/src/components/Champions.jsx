@@ -11,7 +11,7 @@ const Champions = ({ champions }) => {
             <h3>{champ.name}</h3>
             <p>{champ.title}</p>
             <p>{champ.tags}</p>
-            <button>Add To Favorite</button>
+            <button>Add To Favorite</button> {/**make an onclick to add the champ name with the user_id to the favorite champs table */}
         </div>
       ))}
     </div>
