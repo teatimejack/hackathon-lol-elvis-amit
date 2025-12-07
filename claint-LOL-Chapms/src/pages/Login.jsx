@@ -50,7 +50,11 @@ const Login = () => {
             <br />
             <button type="submit" value="LogIn">Submit</button>
         </form>
-
+        <div style={{border:"3px, solid, purple", margin:"10px"}}>
+          <h3>For Demo:</h3>
+          <p>UserName: Amit</p>
+          <p>Password: 1234</p>
+        </div>
     </div>
   )
 }
